@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -37,13 +36,15 @@ public class RatingAverage {
 
 		String[] tokens = value.toString().split(DELIMITER);
 		word.set(tokens[1]);	
-		try {
+		rating.set(Float.parseFloat(tokens[2]));
+
+		/*try {
 			rating.set((float) Integer.parseInt(tokens[2]));
 		}
 		catch (Exception e) {
 			System.out.println("Something went wrong with token: " + tokens[2]);
 			rating.set(0);
-		}
+		}*/
         context.write(word, rating);
     }
   }
