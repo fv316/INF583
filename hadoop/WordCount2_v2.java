@@ -26,15 +26,40 @@ public class WordCount2 {
 
     private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
-	private final String DELIMITER = ",";
-
 
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
+    	
+    	
+		BufferedReader br = null;
+	    String line = "";
+	    String cvsSplitBy = ",";
 
-		String[] tokens = value.toString().split(DELIMITER);
-		word.set(tokens[1]);		
-        context.write(word, one);
+        try {
+
+            br = new BufferedReader(new FileReader(value.toString()));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] csvLine = line.split(cvsSplitBy);
+                word.set(csvLine[1]);
+                context.write(word, one);
+                
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
   }
 

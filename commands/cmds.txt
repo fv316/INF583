@@ -8,9 +8,10 @@ docker run -it sequenceiq/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash
 docker cp ratings.csv e3d8eab585db:/usr/local/hadoop/bin/ratings.csv
 docker cp db2020_artifact-0.0.1-SNAPSHOT.jar f2a4330adb16:/usr/local/hadoop/bin/db2020_artifact-0.0.1-SNAPSHOT.jar
 ./hadoop fs -put /usr/local/hadoop/bin/ratings.csv
+mvn install package
 
 
---lab1 setup instructions--
+--LAB 1 setup instructions--
 cd $HADOOP_PREFIX
 
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/WordCount2.java -o WordCount2.java
@@ -22,15 +23,15 @@ bin/hadoop fs -put /usr/local/hadoop/bin/ratings.csv /usr/homework1/ratings.csv
 bin/hadoop com.sun.tools.javac.Main WordCount2.java
 jar cf wordcount2.jar WordCount2*.class
 
-bin/hadoop jar wordcount2.jar WordCount2 /usr/homework1/ratings.csv /usr/homework1/output/
+bin/hadoop jar wordcount2.jar WordCount2 /usr/homework1/ratings.csv /usr/homework1/output_2/
+bin/hadoop fs -cat /usr/homework1/output_2/part-r-00000
 
 
-
-LAB 2
+--LAB 2--
 docker run -it -p 4040:4040 -p 8080:8080 -p 8081:8081 -h spark --name=spark -v spark-vol p7hb/docker-spark
 build install
 
-LAB 3 [2:]
+--LAB 3 [2:]--
 QWPGZRZvioh7Xw9wf3wOvKgKVxW
 FRIPOVtNhrcxMSORdQTzpXhExSrnBOSTpOdo6JeN0tvC5yr057Uo
 HF1220732960166596608-JASpHO0CvnrRKTieyinxTWP1vo3gIT
