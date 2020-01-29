@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,12 +24,12 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class RatingAverage {
 
   public static class TokenizerMapper
-       extends Mapper<Object, Text, Text, FloatWritable>{
+       extends Mapper<Object, Text, Text, IntWritable>{
 
-    private final static FloatWritable one = new FloatWritable(1);
+    private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
 	private final String DELIMITER = ",";
-    private FloatWritable rating = new FloatWritable();
+    private IntWritable rating = new IntWritable();
 
 
     public void map(Object key, Text value, Context context
@@ -37,7 +38,7 @@ public class RatingAverage {
 		String[] tokens = value.toString().split(DELIMITER);
 		word.set(tokens[1]);	
 		try {
-			rating.set((float) Integer.parseInt(tokens[2]));
+			rating.set(Integer.parseInt(tokens[2]));
 		}
 		catch (Exception e) {
 			System.out.println("Something went wrong with token: " + tokens[2]);
@@ -48,15 +49,15 @@ public class RatingAverage {
   }
 
   public static class IntSumReducer
-       extends Reducer<Text,FloatWritable,Text,FloatWritable> {
+       extends Reducer<Text,IntWritable,Text,FloatWritable> {
     private FloatWritable result = new FloatWritable();
 
-    public void reduce(Text key, Iterable<FloatWritable> values,
+    public void reduce(Text key, Iterable<IntWritable> values,
                        Context context
                        ) throws IOException, InterruptedException {
       float sum = 0;
       float total = 0;
-      for (FloatWritable val : values) {
+      for (IntWritable val : values) {
         sum += val.get();
         total += 1;
       }
