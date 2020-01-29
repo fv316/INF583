@@ -37,7 +37,13 @@ public class RatingAverage {
 
 		String[] tokens = value.toString().split(DELIMITER);
 		word.set(tokens[1]);	
-		rating.set(Integer.parseInt(tokens[2]));
+		try {
+			rating.set(Integer.parseInt(tokens[2]));
+		}
+		catch (Exception e) {
+			System.out.println("Something went wrong with token: " + tokens[2]);
+			rating.set(0);
+		}
         context.write(word, rating);
     }
   }
