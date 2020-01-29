@@ -1,14 +1,8 @@
-package hadoop;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 /* Warning this is a copy of the code provided in the tutorial
  * https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
  *                 it is not a file that can be directly compiled
  *                 */
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configuration;
@@ -32,36 +26,9 @@ public class WordCount2 {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
     	
-    	
-		BufferedReader br = null;
-	    String line = "";
-	    String cvsSplitBy = ",";
-
-        try {
-
-            br = new BufferedReader(new FileReader(value.toString()));
-            while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] csvLine = line.split(cvsSplitBy);
-                word.set(csvLine[1]);
-                context.write(word, one);
-                
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+      String[] line = value.toString().split(",");
+      word.set(line[1]);
+      context.write(word, one);
     }
   }
 
