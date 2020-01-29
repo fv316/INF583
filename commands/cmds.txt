@@ -16,13 +16,13 @@ cd $HADOOP_PREFIX
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/WordCount2.java -o WordCount2.java
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/ratings.csv -o ratings.csv
 
-bin/hadoop fs -mkdir -p /user/homework1
+bin/hadoop fs -mkdir -p /usr/homework1
 bin/hadoop fs -put /usr/local/hadoop/bin/ratings.csv /usr/homework1/ratings.csv
 
 bin/hadoop com.sun.tools.javac.Main WordCount2.java
 jar cf wordcount2.jar WordCount2*.class
 
-bin/hadoop jar /usr/local/hadoop/wordcount2.jar WordCount2 /usr/local/hadoop/bin/ratings.csv /usr/local/hadoop/bin/output/ 
+bin/hadoop jar wordcount2.jar WordCount2 /usr/homework1/ratings.csv /usr/homework1/output/
 
 
 
