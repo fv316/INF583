@@ -26,7 +26,7 @@ public class WordCount2 {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
     	
-      String[] line = value.toString().split("\t");
+      String[] line = value.toString().split(",");
       word.set(line[1]);
       context.write(word, one);
     }
