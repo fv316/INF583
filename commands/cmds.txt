@@ -12,13 +12,8 @@ LAB 2
 docker run -it -p 4040:4040 -p 8080:8080 -p 8081:8081 -h spark --name=spark -v spark-vol p7hb/docker-spark
 build install
 
-LAB 3
-API key:
-PGZRZvioh7Xw9wf3wOvKgKVxW
-API secret key:
-IPOVtNhrcxMSORdQTzpXhExSrnBOSTpOdo6JeN0tvC5yr057Uo
-
-AT: 
-1220732960166596608-JASpHO0CvnrRKTieyinxTWP1vo3gIT
-ATS: 
-WbyjW7VQOJAza00ErZ7bpLMDm3YQ5gPam3YSSO9NpQpvI
+LAB 3 [2:]
+QWPGZRZvioh7Xw9wf3wOvKgKVxW
+FRIPOVtNhrcxMSORdQTzpXhExSrnBOSTpOdo6JeN0tvC5yr057Uo
+HF1220732960166596608-JASpHO0CvnrRKTieyinxTWP1vo3gIT
+LOWbyjW7VQOJAza00ErZ7bpLMDm3YQ5gPam3YSSO9NpQpvI
