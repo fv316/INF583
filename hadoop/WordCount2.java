@@ -1,6 +1,3 @@
-package hadoop;
-
-
 /* Warning this is a copy of the code provided in the tutorial
  * https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
  *                 it is not a file that can be directly compiled
