@@ -1,4 +1,4 @@
---prelim instructions--
+--------------------------------introduction--------------------------------
 cd $HADOOP_PREFIX
 # run the mapreduce
 bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar grep input output 'dfs[a-z.]+'
@@ -10,22 +10,24 @@ docker cp db2020_artifact-0.0.1-SNAPSHOT.jar f2a4330adb16:/usr/local/hadoop/bin/
 ./hadoop fs -put /usr/local/hadoop/bin/ratings.csv
 mvn install package
 
-
---LAB 1 setup instructions Ex1--
+------------------------------------------------------------------------------------------------
+--------------------------------LAB 1 setup instructions Ex1--------------------------------
 cd $HADOOP_PREFIX
 
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/WordCount2.java -o WordCount2.java
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/ratings.csv -o ratings.csv
 
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar 
 bin/hadoop fs -mkdir -p /usr/homework1
-bin/hadoop fs -put /usr/local/hadoop/bin/ratings.csv /usr/homework1/ratings.csv
+bin/hadoop fs -put /usr/local/hadoop/ratings.csv /usr/homework1/ratings.csv
 
 bin/hadoop com.sun.tools.javac.Main WordCount2.java
 jar cf wordcount2.jar WordCount2*.class
 
 bin/hadoop jar wordcount2.jar WordCount2 /usr/homework1/ratings.csv /usr/homework1/output_2/
 bin/hadoop fs -cat /usr/homework1/output_2/part-r-00000
---LAB 1 setup instructions Ex2--
+
+--------------------------------LAB 1 setup instructions Ex2--------------------------------
 curl -L https://raw.githubusercontent.com/fv316/INF583/master/hadoop/RatingAverage.java -o RatingAverage.java
 
 bin/hadoop fs -mkdir -p /usr/homework1
@@ -33,20 +35,21 @@ bin/hadoop fs -mkdir -p /usr/homework1
 bin/hadoop com.sun.tools.javac.Main RatingAverage.java
 jar cf ratingaverage.jar RatingAverage*.class
 
-bin/hadoop jar ratingaverage.jar RatingAverage /usr/homework1/ratings.csv /usr/homework1/output_5/
-bin/hadoop fs -cat /usr/homework1/output_5/part-r-00000
+bin/hadoop jar ratingaverage.jar RatingAverage /usr/homework1/ratings.csv /usr/homework1/output/
+bin/hadoop fs -cat /usr/homework1/output/part-r-00000
 
 
 
 
 
-
---LAB 2--
+------------------------------------------------------------------------------------------------
+--------------------------------LAB 2--------------------------------
 docker run -it -p 4040:4040 -p 8080:8080 -p 8081:8081 -h spark --name=spark -v spark-vol p7hb/docker-spark
 build install
 
---LAB 3 [2:]--
+--------------------------------LAB 3 [2:]--------------------------------
 QWPGZRZvioh7Xw9wf3wOvKgKVxW
 FRIPOVtNhrcxMSORdQTzpXhExSrnBOSTpOdo6JeN0tvC5yr057Uo
 HF1220732960166596608-JASpHO0CvnrRKTieyinxTWP1vo3gIT
 LOWbyjW7VQOJAza00ErZ7bpLMDm3YQ5gPam3YSSO9NpQpvI
+-Xmx1024M
