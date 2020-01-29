@@ -62,8 +62,8 @@ public class RatingAverage {
 
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
-    Job job = Job.getInstance(conf, "word count");
-    job.setJarByClass(WordCount2.class);
+    Job job = Job.getInstance(conf, "rating average");
+    job.setJarByClass(RatingAverage.class);
     job.setMapperClass(TokenizerMapper.class);
     job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(IntSumReducer.class);
