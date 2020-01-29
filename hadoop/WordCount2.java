@@ -33,7 +33,7 @@ public class WordCount2 {
                     ) throws IOException, InterruptedException {
 
 		String[] tokens = value.toString().split(DELIMITER);
-		word.set(tokens[1]);		
+		word.set(tokens[0]);		
         context.write(word, one);
     }
   }
