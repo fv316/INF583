@@ -9,7 +9,9 @@ docker cp ratings.csv e3d8eab585db:/usr/local/hadoop/bin/ratings.csv
 docker cp db2020_artifact-0.0.1-SNAPSHOT.jar f2a4330adb16:/usr/local/hadoop/bin/db2020_artifact-0.0.1-SNAPSHOT.jar
 ./hadoop fs -put /usr/local/hadoop/bin/ratings.csv
 mvn install package
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 --------------------------------LAB 1 setup instructions Ex1--------------------------------
 cd $HADOOP_PREFIX
@@ -37,18 +39,29 @@ jar cf ratingaverage.jar RatingAverage*.class
 
 bin/hadoop jar ratingaverage.jar RatingAverage /usr/homework1/ratings.csv /usr/homework1/output/
 bin/hadoop fs -cat /usr/homework1/output/part-r-00000
-
-
-
-
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ------------------------------------------------------------------------------------------------
---------------------------------LAB 2--------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+--------------------------------LAB 2 setup instructions Ex1--------------------------------
 docker run -it -p 4040:4040 -p 8080:8080 -p 8081:8081 -h spark --name=spark -v spark-vol p7hb/docker-spark
-build install
+
 mvn install package @ root: C:\Users\fvice\eclipse-workspace-12\spark
 
-curl -L https://raw.githubusercontent.com/fv316/INF583/blob/master/lab%202/spark-0.0.1-SNAPSHOT.jar -o essai.jar
+curl -L https://github.com/fv316/INF583/raw/master/lab%202/spark-0.0.1-SNAPSHOT_v1.jar -o essai.jar
+
+spark-submit --class spark.Essai --master local essai.jar /root/text.txt /root/output_2/
+vim output_1/part-00001
+--------------------------------LAB 2 setup instructions Ex2--------------------------------
+
+
+
+
+
+
+
+
 
 --------------------------------LAB 3 [2:]--------------------------------
 QWPGZRZvioh7Xw9wf3wOvKgKVxW
