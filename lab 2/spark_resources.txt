@@ -1,1 +1,4 @@
 https://spark.apache.org/docs/latest/rdd-programming-guide.html
+https://github.com/aseigneurin/spark-sandbox/tree/master/src/main/java/com/seigneurin/spark
+https://blog.ippon.fr/2014/11/13/initiation-au-mapreduce-avec-apache-spark/
+https://spark.apache.org/examples.html
